@@ -42,7 +42,7 @@ FROM composer:latest AS composer
 ###########################
 
 # fpm alpine php extension base
-FROM php:8.3-fpm-alpine AS fpm-php-ext-base
+FROM php:8.5.0RC2-fpm-alpine AS fpm-php-ext-base
 RUN apk add --no-cache \
     # build-tools
     autoconf \
@@ -123,7 +123,7 @@ RUN docker-php-ext-install -j$(nproc) opcache
 # fpm base build
 ###########################
 
-FROM php:8.3-fpm-alpine AS fpm-base
+FROM php:8.5.0RC2-fpm-alpine AS fpm-base
 ARG TIMEZONE
 RUN apk add --no-cache \
         bash \
